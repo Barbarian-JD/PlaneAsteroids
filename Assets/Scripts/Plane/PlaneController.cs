@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlaneController : MonoBehaviour
 {
-    public PlaneSO PlaneData;
+    public PlaneSO PlaneConfig;
 
     // Start is called before the first frame update
     void Start()
@@ -13,8 +13,18 @@ public class PlaneController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         
+    }
+
+    public void MovePlaneByVector(Vector2 deltaPosition)
+    {
+        Vector3 viewPortPos = Camera.main.WorldToViewportPoint(transform.position + (Vector3)deltaPosition);
+        if (viewPortPos.x > 0 && viewPortPos.x < 1
+            && viewPortPos.y > 0 && viewPortPos.y < 1)
+        {
+            transform.position += (Vector3)deltaPosition;
+        }
     }
 }

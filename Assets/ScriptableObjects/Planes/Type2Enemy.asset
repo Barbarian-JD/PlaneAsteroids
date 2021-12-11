@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHP: 100
   _baseAttack: 15
-  _speed: {x: 10, y: 12}
+  _speed: {x: 10, y: 4}
   _planeType: 1
+  _description: Fast plane - Low HP, high attack, high speed
   _weapons:
   - {fileID: 11400000, guid: 44b065735393346d380d4ec86405678b, type: 2}

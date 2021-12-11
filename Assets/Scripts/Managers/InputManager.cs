@@ -50,7 +50,6 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
         {
             _touchStartPos = Vector2.zero;
             _touchDeltaPos = Vector2.zero;
-
         }
 #endif
     }

@@ -21,9 +21,9 @@ public class PlayerPlaneController : PlaneController
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        
+        base.Update();
     }
 
     private void OnPlayerInputReceived(object sender, Vector2 deltaInputPos)
@@ -31,13 +31,5 @@ public class PlayerPlaneController : PlaneController
         MovePlaneByVector(deltaInputPos);
     }
 
-    public void MovePlaneByVector(Vector2 deltaPosition)
-    {
-        Vector3 viewPortPos = Camera.main.WorldToViewportPoint(transform.position + (Vector3)deltaPosition);
-        if (viewPortPos.x > 0 && viewPortPos.x < 1
-            && viewPortPos.y > 0 && viewPortPos.y < 1)
-        {
-            transform.position += (Vector3)deltaPosition;
-        }
-    }
+    
 }

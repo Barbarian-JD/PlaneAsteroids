@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHP: 200
   _baseAttack: 5
-  _speed: {x: 5, y: 7}
+  _speed: {x: 5, y: 3}
   _planeType: 0
+  _description: Normal plane - Medium HP, low attack, medium speed
   _weapons:
   - {fileID: 11400000, guid: 44b065735393346d380d4ec86405678b, type: 2}
