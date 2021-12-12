@@ -2,32 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(PlaneController))]
 public class PlaneView : MonoBehaviour
 {
-    public bool IsAlive { get; private set; } = true;
+    // Assuming one trigger point for all weapons for simplicity.
+    public Transform WeaponTriggerPoint;
+
+    private List<WeaponController> weapons = new List<WeaponController>();
+
 
     // Start is called before the first frame update
     void Start()
     {
-        IsAlive = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        CheckForLifeSpan();
     }
 
-    private void CheckForLifeSpan()
+    
+
+    public void AttachWeapon(WeaponController weaponView)
     {
-        Vector3 viewPortPos = Camera.main.WorldToViewportPoint(transform.position);
-        if (IsAlive && viewPortPos.y < -0.1f)
-        {
-            IsAlive = false;
-
-            StopAllCoroutines();
-
-            Destroy(gameObject);
-        }
+        weapons.Add(weaponView);
     }
+
+    
 }

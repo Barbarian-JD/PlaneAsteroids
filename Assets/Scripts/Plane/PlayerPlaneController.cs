@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PlayerPlaneController : PlaneController
 {
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
+
         if(InputManager.Instance != null)
         {
             InputManager.Instance.PlayerInputHappening += OnPlayerInputReceived;

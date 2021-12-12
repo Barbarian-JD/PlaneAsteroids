@@ -6,8 +6,10 @@ using UnityEngine;
 public class AIPlaneController : PlaneController
 {
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
+        base.Start();
+
         StartCoroutine("MoveInYDirection");
     }
 
@@ -17,9 +19,16 @@ public class AIPlaneController : PlaneController
         base.Update();
     }
 
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        transform.Rotate(transform.forward, 180f);
+    }
+
     private IEnumerator MoveInYDirection()
     {
-        while (gameObject != null && GetComponent<PlaneView>().IsAlive)
+        while (gameObject != null && IsAlive)
         {
             transform.position -= Time.deltaTime * new Vector3(0, PlaneConfig.GetSpeed().y, 0);
             yield return new WaitForEndOfFrame();

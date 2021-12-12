@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cbd8734d19b394cc7b513bdefa1d5ce5, type: 3}
-  m_Name: MultiGun
+  m_Name: SingleGunWeapon
   m_EditorClassIdentifier: 
   _baseAttack: 5
-  _attackSpeed: 2
-  _numBullets: 2
-  _weaponType: 1
+  _cooldownTime: 1
+  _bulletSpeed: 5
+  _numBullets: 1
+  _weaponType: 0
+  BulletPrefab: {fileID: 5203215143668625184, guid: be6af906e58c34898910c545f58661d8, type: 3}

@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfbd5fd3059bc45f3839dc55b6d88e14, type: 3}
-  m_Name: PlayerPlane
+  m_Script: {fileID: 11500000, guid: cbd8734d19b394cc7b513bdefa1d5ce5, type: 3}
+  m_Name: MultiGunWeapon
   m_EditorClassIdentifier: 
-  _maxHP: 1000
-  _speed: {x: 10, y: 10}
-  _planeType: 0
-  _description: 
-  _weaponPrefabs:
-  - {fileID: 7360635756840144773, guid: 0a5a72830e616472293f9caf621a4511, type: 3}
+  _baseAttack: 5
+  _cooldownTime: 0.2
+  _bulletSpeed: 16
+  _numBullets: 3
+  _weaponType: 1
+  BulletPrefab: {fileID: 5203215143668625184, guid: be6af906e58c34898910c545f58661d8, type: 3}

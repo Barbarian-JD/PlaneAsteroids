@@ -17,7 +17,6 @@ public enum PlaneType
 public class PlaneSO : ScriptableObject
 {
     [SerializeField] private int _maxHP = 100;
-    [SerializeField] private int _baseAttack = 5;
     [SerializeField] private Vector2 _speed = new Vector2(5, 5);
     [SerializeField] private PlaneType _planeType = PlaneType.PLANE_TYPE_1;
 
@@ -25,7 +24,9 @@ public class PlaneSO : ScriptableObject
     [SerializeField][TextArea(1, 3)] private string _description; // Currently for config readability
 
     [Space(10)]
-    [SerializeField] private List<WeaponSO> _weapons;
+    [SerializeField] private List<GameObject> _weaponPrefabs;
 
     public Vector2 GetSpeed() => _speed;
+    public List<GameObject> GetWeaponPrefabs() => _weaponPrefabs;
+
 }

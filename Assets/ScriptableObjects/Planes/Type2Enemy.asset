@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: Type2Enemy
   m_EditorClassIdentifier: 
   _maxHP: 100
-  _baseAttack: 15
   _speed: {x: 10, y: 4}
   _planeType: 1
   _description: Fast plane - Low HP, high attack, high speed
-  _weapons:
-  - {fileID: 11400000, guid: 44b065735393346d380d4ec86405678b, type: 2}
+  _weaponPrefabs:
+  - {fileID: 7360635756840144773, guid: 0a5a72830e616472293f9caf621a4511, type: 3}
