@@ -6,6 +6,11 @@ using UnityEngine.UI;
 
 public class GameManager : SingletonMonoBehaviour<GameManager>
 {
+    public static class Tags
+    {
+        public static readonly string BULLET_TAG = "BULLET";
+    }
+
     public GameConfigSO GameConfig;
 
     protected override void Awake()

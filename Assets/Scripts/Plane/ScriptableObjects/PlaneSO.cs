@@ -6,7 +6,7 @@ using UnityEngine;
 // The dev has no knowledge about aeroplane types.
 public enum PlaneType
 {
-    PLANE_TYPE_1 = 0, // Normal plane - Medium HP, low attack, medium speed
+    PLANE_TYPE_1 = 0, // Normal plane - Medium HP, low attack, slow speed
     PLANE_TYPE_2 = 1, // Fast plane - Low HP, high attack, high speed
     PLANE_TYPE_3 = 2, // Bigger plane - High HP, medium attack, low speed
     PLANE_TYPE_4 = 3, // Boss plane - High HP, high attack, low speed
@@ -26,6 +26,7 @@ public class PlaneSO : ScriptableObject
     [Space(10)]
     [SerializeField] private List<GameObject> _weaponPrefabs;
 
+    public int GetMaxHP() => _maxHP;
     public Vector2 GetSpeed() => _speed;
     public List<GameObject> GetWeaponPrefabs() => _weaponPrefabs;
 

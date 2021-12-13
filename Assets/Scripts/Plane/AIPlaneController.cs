@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,5 +36,10 @@ public class AIPlaneController : PlaneController
         }
 
         yield return null;
+    }
+
+    protected override bool ShouldTakeDamageFromBullet(Bullet bullet)
+    {
+        return bullet && bullet.IsFiredFromPlayerPlane();
     }
 }

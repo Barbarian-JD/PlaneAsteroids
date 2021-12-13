@@ -48,6 +48,9 @@ public class LinearProjectileWeaponController : WeaponController
 
                         Rigidbody rb = bulletObject.transform.GetComponent<Rigidbody>();
                         rb.velocity = GetShootingDirection() * Weapon.GetBulletSpeed();
+
+                        bulletObject.GetComponent<Bullet>().OwnerWeaponController = this;
+                        bulletObject.tag = GameManager.Tags.BULLET_TAG;
                     }
                 }
             }

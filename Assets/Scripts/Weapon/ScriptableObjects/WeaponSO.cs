@@ -13,7 +13,7 @@ public enum WeaponType
 [CreateAssetMenu(menuName = "ScriptableObjects/New Weapon")]
 public class WeaponSO : ScriptableObject
 {
-    [SerializeField] private float _baseAttack = 5;
+    [SerializeField] private int _baseAttack = 5;
     [SerializeField] private float _cooldownTime = 1;
     [SerializeField] private float _bulletSpeed = 5;
     [SerializeField] private int _numBullets = 1; // Number of bullets fired simultaneously
@@ -21,7 +21,7 @@ public class WeaponSO : ScriptableObject
 
     public GameObject BulletPrefab;
 
-    public float GetBaseAttack() => _baseAttack;
+    public int GetBaseAttack() => _baseAttack;
     public float GetCooldownTime() => _cooldownTime;
     public float GetBulletSpeed() => _bulletSpeed;
     public int GetNumBulletToFire() => _numBullets;

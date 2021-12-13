@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,5 +34,8 @@ public class PlayerPlaneController : PlaneController
         MovePlaneByVector(deltaInputPos);
     }
 
-    
+    protected override bool ShouldTakeDamageFromBullet(Bullet bullet)
+    {
+        return bullet && !bullet.IsFiredFromPlayerPlane();
+    }
 }

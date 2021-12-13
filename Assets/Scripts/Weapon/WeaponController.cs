@@ -48,11 +48,11 @@ public abstract class WeaponController : MonoBehaviour
 
     protected abstract void Fire();
 
-    protected bool IsWeaponOnPlayerController() => _planeController is PlayerPlaneController;
+    public bool IsWeaponOnPlayerController() => _planeController is PlayerPlaneController;
 
     protected virtual Vector2 GetShootingDirection()
     {
-        return IsWeaponOnPlayerController() ? new Vector2(0f, 1f) : new Vector2(0f, -1f);
+        return transform.up;
     }
 
     private void OnDestroy()

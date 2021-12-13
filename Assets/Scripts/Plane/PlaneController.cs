@@ -1,18 +1,35 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(PlaneView))]
-public class PlaneController : MonoBehaviour
+public abstract class PlaneController : MonoBehaviour
 {
     public PlaneSO PlaneConfig;
 
     public bool IsAlive { get; private set; } = true;
 
+    protected int _currHealth;
+    public int CurrHealth
+    {
+        get { return _currHealth; }
+        protected set
+        {
+            _currHealth = value;
+            IsAlive = _currHealth > 0;
+            if(!IsAlive)
+            {
+                DestroyPlane();
+            }
+        }
+    }
+
+    public EventHandler<int> PlaneDamaged;
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        IsAlive = true;
         Initialize();
     }
 
@@ -24,6 +41,9 @@ public class PlaneController : MonoBehaviour
 
     public virtual void Initialize()
     {
+        CurrHealth = PlaneConfig.GetMaxHP();
+        IsAlive = true;
+
         List<GameObject> weaponPrefabs = PlaneConfig.GetWeaponPrefabs();
         if (weaponPrefabs == null || weaponPrefabs.Count == 0)
         {
@@ -70,23 +90,28 @@ public class PlaneController : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Can contain conditions when the plane itself isn't able to fire. Eg. the plane is stunned.
-    /// </summary>
-    /// <returns></returns>
-    protected bool CanFire()
+    protected abstract bool ShouldTakeDamageFromBullet(Bullet bullet);
+
+    private void OnTriggerEnter(Collider other)
     {
-        return true;
+        if (other.gameObject.GetComponent<Bullet>() != null
+            && ShouldTakeDamageFromBullet(other.gameObject.GetComponent<Bullet>()))
+        {
+            Bullet bullet = other.gameObject.GetComponent<Bullet>();
+            if (bullet.OwnerWeaponController
+                && bullet.OwnerWeaponController.Weapon)
+            {
+                int damage = bullet.OwnerWeaponController.Weapon.GetBaseAttack();
+
+                CurrHealth = Math.Max(0, CurrHealth - damage);
+                PlaneDamaged?.Invoke(this, damage);
+            }
+        }
     }
 
-    /// <summary>
-    /// Checks and fires the weapons.
-    /// </summary>
-    protected void Fire()
+    protected void DestroyPlane()
     {
-        if(CanFire())
-        {
-
-        }
+        // Wrong way to do this, need to use Object Pooling instead.
+        Destroy(gameObject);
     }
 }
