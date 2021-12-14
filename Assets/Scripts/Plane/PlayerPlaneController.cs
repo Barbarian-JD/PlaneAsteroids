@@ -38,4 +38,11 @@ public class PlayerPlaneController : PlaneController
     {
         return bullet && !bullet.IsFiredFromPlayerPlane();
     }
+
+    protected void OnTriggerEnter(Collider other)
+    {
+        base.OnTriggerEnter(other);
+
+
+    }
 }

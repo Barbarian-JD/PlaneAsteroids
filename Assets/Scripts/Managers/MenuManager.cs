@@ -6,13 +6,16 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
+    public TMPro.TMP_Text HighScoreText;
+    public TMPro.TMP_Text LevelsCompletedText;
+
     [SerializeField] private Button _playButton;
 
 //#if CHEATS_ENABLED
     [SerializeField] private Dropdown _levelSelectDropdown;
     //#endif
 
-    private int _levelToLoad = 1;
+    public static int LevelToLoad = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -24,9 +27,11 @@ public class MenuManager : MonoBehaviour
             PlayerData playerData = GameState.Instance.GetPlayerData();
             if (_levelSelectDropdown != null && playerData != null)
             {
-                _levelToLoad = playerData.MaxLevelUnlocked;
-                _levelSelectDropdown.SetValueWithoutNotify(_levelToLoad - 1);
+                LevelToLoad = playerData.MaxLevelUnlocked;
+                _levelSelectDropdown.SetValueWithoutNotify(LevelToLoad - 1);
             }
+
+            SetupScores();
         }
     }
 
@@ -70,6 +75,24 @@ public class MenuManager : MonoBehaviour
         }
     }
 
+    private void SetupScores()
+    {
+        if (GameState.Instance != null)
+        {
+            PlayerData playerData = GameState.Instance.GetPlayerData();
+            {
+                if (HighScoreText)
+                {
+                    HighScoreText.text = playerData.HighScore.ToString();
+                }
+                if (LevelsCompletedText)
+                {
+                    LevelsCompletedText.text = playerData.MaxLevelUnlocked.ToString();
+                }
+            }
+        }
+    }
+
     private void OnPlayButtonClicked()
     {
         SceneManager.LoadScene("GameScene");
@@ -93,6 +116,6 @@ public class MenuManager : MonoBehaviour
 
     private void OnLevelSelectDropDownValueChanged(int value)
     {
-        _levelToLoad = value + 1;
+        LevelToLoad = value + 1;
     }
 }

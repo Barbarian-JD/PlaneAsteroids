@@ -35,7 +35,6 @@ public class LinearProjectileWeaponController : WeaponController
                         if(isOddNumOfBullets)
                         {
                             xDeltaIndex = i - (numBulletsToFire / 2 + 1);
-
                         }
                         else
                         {

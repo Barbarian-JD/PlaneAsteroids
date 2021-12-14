@@ -14,10 +14,7 @@ public class PlaneView : MonoBehaviour
 
     private void Start()
     {
-        if(GetComponent<PlaneController>() is AIPlaneController)
-        {
-            HealthText.transform.Rotate(transform.forward, 180);
-        }
+        FlipHPTextIfNeeded();
     }
 
     void OnEnable()
@@ -28,6 +25,14 @@ public class PlaneView : MonoBehaviour
     void OnDisable()
     {
         GetComponent<PlaneController>().PlaneDamaged += OnPlaneDamaged;
+    }
+
+    private void FlipHPTextIfNeeded()
+    {
+        if (GetComponent<PlaneController>() is AIPlaneController)
+        {
+            HealthText.transform.Rotate(transform.forward, 180);
+        }
     }
 
     public void AttachWeapon(WeaponController weaponView)

@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfbd5fd3059bc45f3839dc55b6d88e14, type: 3}
   m_Name: PlayerPlane
   m_EditorClassIdentifier: 
-  _maxHP: 1000
+  _maxHP: 1200
   _speed: {x: 10, y: 10}
   _planeType: 0
   _description: 
   _weaponPrefabs:
   - {fileID: 7360635756840144773, guid: 0a5a72830e616472293f9caf621a4511, type: 3}
+  _weaponConfigs:
+  - {fileID: 11400000, guid: 95e12834efd0a477ba4dfe99609760e2, type: 2}

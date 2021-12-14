@@ -11,7 +11,7 @@ public abstract class PlaneController : MonoBehaviour
     public bool IsAlive { get; private set; } = true;
 
     protected int _currHealth;
-    public int CurrHealth
+    public virtual int CurrHealth
     {
         get { return _currHealth; }
         protected set
@@ -24,6 +24,8 @@ public abstract class PlaneController : MonoBehaviour
             }
         }
     }
+
+    public EventHandler PlaneDestroyed;
 
     public EventHandler<int> PlaneDamaged;
 
@@ -52,15 +54,17 @@ public abstract class PlaneController : MonoBehaviour
         }
 
         // Attach weapons on the plane
-        foreach (GameObject prefab in weaponPrefabs)
+        for (int i=0; i<weaponPrefabs.Count; i++)
         {
+            GameObject prefab = weaponPrefabs[i];
+
             GameObject weapon = Instantiate(prefab);
             if (weapon && weapon.GetComponent<WeaponController>() != null)
             {
                 // Attach weapon to the plane.
                 GetComponent<PlaneView>().AttachWeapon(weapon.GetComponent<WeaponController>());
 
-                weapon.GetComponent<WeaponController>().Initialize(this);
+                weapon.GetComponent<WeaponController>().Initialize(this, PlaneConfig.GetWeaponConfigs()[i]);
                 weapon.transform.SetParent(transform);
                 weapon.GetComponent<WeaponController>().StartFiring();
             }
@@ -92,7 +96,7 @@ public abstract class PlaneController : MonoBehaviour
 
     protected abstract bool ShouldTakeDamageFromBullet(Bullet bullet);
 
-    private void OnTriggerEnter(Collider other)
+    protected void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<Bullet>() != null
             && ShouldTakeDamageFromBullet(other.gameObject.GetComponent<Bullet>()))
@@ -113,5 +117,7 @@ public abstract class PlaneController : MonoBehaviour
     {
         // Wrong way to do this, need to use Object Pooling instead.
         Destroy(gameObject);
+
+        PlaneDestroyed?.Invoke(this, null);
     }
 }

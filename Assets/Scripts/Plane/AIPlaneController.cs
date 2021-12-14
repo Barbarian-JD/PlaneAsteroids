@@ -6,6 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(PlaneView))]
 public class AIPlaneController : PlaneController
 {
+    public bool IsBoss { get; set; } = false;
+
     // Start is called before the first frame update
     protected override void Start()
     {

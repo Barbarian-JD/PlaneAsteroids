@@ -15,6 +15,8 @@ MonoBehaviour:
   _maxHP: 100
   _speed: {x: 10, y: 4}
   _planeType: 1
-  _description: Fast plane - Low HP, high attack, high speed
+  _description: Small plane - Low HP, high attack, medium attack speed, high speed
   _weaponPrefabs:
-  - {fileID: 7360635756840144773, guid: 0a5a72830e616472293f9caf621a4511, type: 3}
+  - {fileID: 7360635756840144773, guid: 333ef7f9d8d2240f9a6011bf07370e4e, type: 3}
+  _weaponConfigs:
+  - {fileID: 11400000, guid: 3c072e0b505c64ed28cc156b9679bffa, type: 2}

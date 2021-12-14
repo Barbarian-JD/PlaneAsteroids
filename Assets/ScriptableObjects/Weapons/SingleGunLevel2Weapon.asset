@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cbd8734d19b394cc7b513bdefa1d5ce5, type: 3}
-  m_Name: SingleGunWeapon
+  m_Name: SingleGunLevel2Weapon
   m_EditorClassIdentifier: 
-  _baseAttack: 5
-  _cooldownTime: 1
+  _baseAttack: 10
+  _cooldownTime: 0.9
   _bulletSpeed: 7
   _numBullets: 1
   _weaponType: 0

@@ -18,9 +18,10 @@ public abstract class WeaponController : MonoBehaviour
 
     }
 
-    public void Initialize(PlaneController planeController)
+    public void Initialize(PlaneController planeController, WeaponSO weaponConfig)
     {
         _planeController = planeController;
+        Weapon = weaponConfig;
     }
 
     public void StartFiring()
