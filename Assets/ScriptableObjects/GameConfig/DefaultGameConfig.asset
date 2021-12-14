@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: DefaultGameConfig
   m_EditorClassIdentifier: 
   _totalLevels: 5
-  _gameBGSpeed: 0.14
+  _gameBGSpeed: 0.05

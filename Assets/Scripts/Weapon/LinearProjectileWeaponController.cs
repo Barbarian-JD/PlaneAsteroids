@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LinearProjectileWeaponController : WeaponController
 {
+    private float xAngleSeparationBetweenBullets = 0.05f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,7 +48,9 @@ public class LinearProjectileWeaponController : WeaponController
                                 + new Vector3(bulletSeparation * xDeltaIndex, 0, 0);
 
                         Rigidbody rb = bulletObject.transform.GetComponent<Rigidbody>();
-                        rb.velocity = GetShootingDirection() * Weapon.GetBulletSpeed();
+                        rb.velocity = Weapon.GetBulletSpeed() * (GetShootingDirection()
+                                        + new Vector2(xAngleSeparationBetweenBullets * xDeltaIndex, 0f)).normalized;
+                                            
 
                         bulletObject.GetComponent<Bullet>().OwnerWeaponController = this;
                         bulletObject.tag = GameManager.Tags.BULLET_TAG;
@@ -55,5 +59,4 @@ public class LinearProjectileWeaponController : WeaponController
             }
         }
     }
-
 }

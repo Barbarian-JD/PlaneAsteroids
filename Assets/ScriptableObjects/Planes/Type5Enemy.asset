@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Type5Enemy
   m_EditorClassIdentifier: 
   _maxHP: 1000
-  _speed: {x: 10, y: 1}
+  _speed: {x: 10, y: 0.5}
   _planeType: 4
   _description: Boss plane - Super High HP, high attack, low speed
   _weaponPrefabs:
   - {fileID: 7360635756840144773, guid: 0a5a72830e616472293f9caf621a4511, type: 3}
   _weaponConfigs:
   - {fileID: 11400000, guid: eca094bffdd784e7eb4691079eba83ee, type: 2}
+  _rewardScore: 600

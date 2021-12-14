@@ -17,6 +17,8 @@ public abstract class PlaneController : MonoBehaviour
         protected set
         {
             _currHealth = value;
+            HealthChanged?.Invoke(this, _currHealth);
+
             IsAlive = _currHealth > 0;
             if(!IsAlive)
             {
@@ -24,6 +26,8 @@ public abstract class PlaneController : MonoBehaviour
             }
         }
     }
+
+    public EventHandler<int> HealthChanged;
 
     public EventHandler PlaneDestroyed;
 
@@ -73,14 +77,14 @@ public abstract class PlaneController : MonoBehaviour
 
     private void CheckForLifeSpan()
     {
-        Vector3 viewPortPos = Camera.main.WorldToViewportPoint(transform.position);
-        if (IsAlive && viewPortPos.y < -0.1f)
+        //Vector3 viewPortPos = Camera.main.WorldToViewportPoint(transform.position);
+        if (IsAlive && !GameManager.CheckIfInsideTheCameraView(transform.position))
         {
             IsAlive = false;
 
             StopAllCoroutines();
 
-            Destroy(gameObject);
+            DestroyPlane();
         }
     }
 
@@ -109,6 +113,8 @@ public abstract class PlaneController : MonoBehaviour
 
                 CurrHealth = Math.Max(0, CurrHealth - damage);
                 PlaneDamaged?.Invoke(this, damage);
+
+                bullet.DestroyBullet();
             }
         }
     }

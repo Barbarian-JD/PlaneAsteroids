@@ -20,3 +20,4 @@ MonoBehaviour:
   - {fileID: 7360635756840144773, guid: 333ef7f9d8d2240f9a6011bf07370e4e, type: 3}
   _weaponConfigs:
   - {fileID: 11400000, guid: 3c072e0b505c64ed28cc156b9679bffa, type: 2}
+  _rewardScore: 200

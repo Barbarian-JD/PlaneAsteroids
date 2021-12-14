@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class WeaponController : MonoBehaviour
 {
-    public WeaponSO Weapon;
+    [HideInInspector] public WeaponSO Weapon;
     protected PlaneController _planeController;
 
     // Start is called before the first frame update

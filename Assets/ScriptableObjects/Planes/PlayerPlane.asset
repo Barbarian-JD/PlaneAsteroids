@@ -18,5 +18,8 @@ MonoBehaviour:
   _description: 
   _weaponPrefabs:
   - {fileID: 7360635756840144773, guid: 0a5a72830e616472293f9caf621a4511, type: 3}
+  - {fileID: 7360635756840144773, guid: 333ef7f9d8d2240f9a6011bf07370e4e, type: 3}
   _weaponConfigs:
   - {fileID: 11400000, guid: 95e12834efd0a477ba4dfe99609760e2, type: 2}
+  - {fileID: 11400000, guid: 44b065735393346d380d4ec86405678b, type: 2}
+  _rewardScore: 0

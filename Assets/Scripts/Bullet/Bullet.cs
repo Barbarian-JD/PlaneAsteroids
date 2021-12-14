@@ -16,11 +16,25 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        CheckForLifeSpan();
     }
 
     public bool IsFiredFromPlayerPlane()
     {
         return OwnerWeaponController ? OwnerWeaponController.IsWeaponOnPlayerController() : false;
+    }
+
+    private void CheckForLifeSpan()
+    {
+        //Vector3 viewPortPos = Camera.main.WorldToViewportPoint(transform.position);
+        if (!GameManager.CheckIfInsideTheCameraView(transform.position))
+        {
+            DestroyBullet();
+        }
+    }
+
+    public void DestroyBullet()
+    {
+        Destroy(gameObject);
     }
 }

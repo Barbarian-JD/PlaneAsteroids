@@ -14,17 +14,21 @@ public class PlaneView : MonoBehaviour
 
     private void Start()
     {
+        UpdateHealthText();
         FlipHPTextIfNeeded();
+
     }
 
     void OnEnable()
     {
-        GetComponent<PlaneController>().PlaneDamaged += OnPlaneDamaged;
+        //GetComponent<PlaneController>().PlaneDamaged += OnPlaneDamaged;
+        GetComponent<PlaneController>().HealthChanged += OnHealthChanged;
     }
 
     void OnDisable()
     {
-        GetComponent<PlaneController>().PlaneDamaged += OnPlaneDamaged;
+        //GetComponent<PlaneController>().PlaneDamaged -= OnPlaneDamaged;
+        GetComponent<PlaneController>().HealthChanged -= OnHealthChanged;
     }
 
     private void FlipHPTextIfNeeded()
@@ -40,9 +44,19 @@ public class PlaneView : MonoBehaviour
         weapons.Add(weaponView);
     }
 
-    private void OnPlaneDamaged(object sender, int damageTaken)
+    //private void OnPlaneDamaged(object sender, int damageTaken)
+    //{
+    //    UpdateHealthText();
+    //}
+
+    private void OnHealthChanged(object sender, int updatedHealth)
     {
-        if(HealthText)
+        UpdateHealthText();
+    }
+
+    private void UpdateHealthText()
+    {
+        if (HealthText)
         {
             HealthText.text = string.Format("HP: {0}", GetComponent<PlaneController>().CurrHealth);
         }

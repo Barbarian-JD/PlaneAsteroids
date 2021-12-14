@@ -27,9 +27,13 @@ public class PlaneSO : ScriptableObject
     [SerializeField] private List<GameObject> _weaponPrefabs;
     [SerializeField] private List<WeaponSO> _weaponConfigs;
 
+    [Space(10)]
+    [SerializeField] private int _rewardScore = 100;
+
     public int GetMaxHP() => _maxHP;
     public Vector2 GetSpeed() => _speed;
     public List<GameObject> GetWeaponPrefabs() => _weaponPrefabs;
     public List<WeaponSO> GetWeaponConfigs() => _weaponConfigs;
+    public int GetRewardScore() => _rewardScore;
 
 }

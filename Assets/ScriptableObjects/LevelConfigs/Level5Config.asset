@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90ce7a829dc6b47ef8915f6c5c9eb409, type: 3}
   m_Name: Level5Config
   m_EditorClassIdentifier: 
-  TotalEnemiesToBeSpawned: 30
+  TotalEnemiesToBeSpawned: 60
   EnemyPlaneTypes: 00000000010000000200000003000000
   PlaneProbabilityWeights:
   - 1
@@ -22,7 +22,7 @@ MonoBehaviour:
   BossPlaneType: 4
   FormationTypes: 000000000100000002000000
   FormationProbabilityWeights:
+  - 0.5
   - 1
-  - 1
-  - 1
-  InterSpawnDelayInSec: 2
+  - 0.5
+  InterSpawnDelayInSec: 1

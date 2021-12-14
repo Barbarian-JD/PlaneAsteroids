@@ -34,4 +34,13 @@ public class PlayerData
             Save();
         }
     }
+
+    public void OnHighScoreChanged(int newHighScore)
+    {
+        if (newHighScore > HighScore)
+        {
+            HighScore = newHighScore;
+            Save();
+        }
+    }
 }

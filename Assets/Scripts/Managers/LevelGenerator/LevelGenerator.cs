@@ -21,7 +21,20 @@ public class LevelGenerator : SingletonMonoBehaviour<LevelGenerator>
     private PlayerPlaneController _playerPlaneController;
     private List<GameObject> _enemyPlaneObjects = new List<GameObject>();
 
+    private int _currentScore = 0;
+    public int CurrentScore
+    {
+        get{ return _currentScore; }
+        set
+        {
+            _currentScore = value;
+
+            ScoreChanged?.Invoke(this, _currentScore);
+        }
+    }
+
     public EventHandler<int> LevelWin;
+    public EventHandler<int> ScoreChanged;
 
     protected override void Awake()
     {
@@ -131,6 +144,7 @@ public class LevelGenerator : SingletonMonoBehaviour<LevelGenerator>
                 _enemyPlaneObjects.RemoveAt(index);
             }
 
+            CurrentScore += controller.PlaneConfig.GetRewardScore();
             controller.PlaneDestroyed -= OnPlaneDestroyed;
 
             // Level win
