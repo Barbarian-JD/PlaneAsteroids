@@ -30,6 +30,9 @@ public class PlaneSO : ScriptableObject
     [Space(10)]
     [SerializeField] private int _rewardScore = 100;
 
+    [Space(10)]
+    public SerializableDictionary<PowerupType, int> PowerupWeights;
+
     public int GetMaxHP() => _maxHP;
     public Vector2 GetSpeed() => _speed;
     public List<GameObject> GetWeaponPrefabs() => _weaponPrefabs;

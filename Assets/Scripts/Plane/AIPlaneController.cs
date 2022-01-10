@@ -42,6 +42,6 @@ public class AIPlaneController : PlaneController
 
     protected override bool ShouldTakeDamageFromBullet(Bullet bullet)
     {
-        return bullet && bullet.IsFiredFromPlayerPlane();
+        return !IsShieldActive && bullet && bullet.IsFiredFromPlayerPlane();
     }
 }

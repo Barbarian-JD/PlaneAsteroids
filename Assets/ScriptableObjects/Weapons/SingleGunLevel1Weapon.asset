@@ -17,4 +17,4 @@ MonoBehaviour:
   _bulletSpeed: 5
   _numBullets: 1
   _weaponType: 0
-  BulletPrefab: {fileID: 5203215143668625184, guid: be6af906e58c34898910c545f58661d8, type: 3}
+  BulletPrefab: {fileID: 5203215143668625184, guid: da02bc0b25dc948d8a0b0e8c19422035, type: 3}

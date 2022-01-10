@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerPlaneController : PlaneController
 {
+    public EventHandler<PowerupType> PowerupApplied;
+
     protected override void Start()
     {
         base.Start();
@@ -36,13 +38,21 @@ public class PlayerPlaneController : PlaneController
 
     protected override bool ShouldTakeDamageFromBullet(Bullet bullet)
     {
-        return bullet && !bullet.IsFiredFromPlayerPlane();
+        return !IsShieldActive && bullet && !bullet.IsFiredFromPlayerPlane();
     }
 
-    protected void OnTriggerEnter(Collider other)
+    protected override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
 
-
+        if (other.gameObject.GetComponent<Powerup>() != null)
+        {
+            Powerup powerup = other.gameObject.GetComponent<Powerup>();
+            if (powerup.CanUsePowerup())
+            {
+                powerup.ApplyPowerup(this);
+                PowerupApplied?.Invoke(this, powerup.GetPowerupType());
+            }
+        }
     }
 }

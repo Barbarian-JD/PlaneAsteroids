@@ -8,12 +8,16 @@ using UnityEngine.UI;
 
 public class LevelGenerator : SingletonMonoBehaviour<LevelGenerator>
 {
+    [Header("Planes")]
     [SerializeField] private List<GameObject> _enemyPlanePrefabs;
     [SerializeField] private GameObject _playerPlanePrefab;
 
-    [Space(20)]
+    [Header("Spawn Transforms")][Space(20)]
     [SerializeField] private Transform _enemySpawnTransform;
     [SerializeField] private Transform _playerSpawnTransform;
+
+    [Header("Powerups")][Space(20)]
+    [SerializeField] private List<GameObject> _powerupPrefabs;
 
     private LevelConfigSO _currLevelConfig;
     private int _levelLoaded = -1;
@@ -154,6 +158,19 @@ public class LevelGenerator : SingletonMonoBehaviour<LevelGenerator>
                 GameManager.Instance.LoadMenuScene();
             }
         }
+    }
 
+    public void SpawnPowerup(PowerupType powerupType, Vector2 pos)
+    {
+        if(powerupType != PowerupType.NONE)
+        {
+            int powerupIndex = ((int)powerupType - 1);
+            if(powerupIndex >=0 && powerupIndex < _powerupPrefabs.Count)
+            {
+                GameObject powerupObject
+                    = Instantiate(_powerupPrefabs[powerupIndex], pos, Quaternion.identity);
+
+            }
+        }
     }
 }

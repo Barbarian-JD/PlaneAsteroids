@@ -102,4 +102,6 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
         return false;
     }
+
+    public int GetTotalNumberOfLevels() => LevelConfigs != null ? LevelConfigs.Length : 0;
 }

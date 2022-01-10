@@ -2369,6 +2369,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c02a2bc3f19ca4556afecdc4d2595158, type: 2}
   - {fileID: 11400000, guid: ea53258b5ff5f4d5c928846da4ba4406, type: 2}
   - {fileID: 11400000, guid: 379610750ff2f48b3b18df827fbbedad, type: 2}
+  - {fileID: 11400000, guid: acbe1c975161049d1b9750d0982df33f, type: 2}
   GameConfig: {fileID: 11400000, guid: 99fc123ba7d7341cbbb7069d3d4f63fc, type: 2}
 --- !u!4 &1906151271
 Transform:

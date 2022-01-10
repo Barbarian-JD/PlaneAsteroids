@@ -10,18 +10,20 @@ public class LevelConfigSO : ScriptableObject
 
     [Space(10)]
     public List<PlaneType> EnemyPlaneTypes;
-    public List<float> PlaneProbabilityWeights;
+    public List<int> PlaneProbabilityWeights;
 
     [Space(5)]
     public PlaneType BossPlaneType;
 
     [Space(10)]
     public List<FormationType> FormationTypes;
-    public List<float> FormationProbabilityWeights;
+    public List<int> FormationProbabilityWeights;
 
     [Space(10)]
     public float InterSpawnDelayInSec = 2;
 
+    [Space(10)][Range(0, 1)]
+    public float LevelPowerupSpawnChance = 0f;
 
     public PlaneType PickWeightedRandomPlaneType()
     {

@@ -23,3 +23,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 95e12834efd0a477ba4dfe99609760e2, type: 2}
   - {fileID: 11400000, guid: 44b065735393346d380d4ec86405678b, type: 2}
   _rewardScore: 0
+  PowerupWeights:
+    _keys: 
+    _values: 

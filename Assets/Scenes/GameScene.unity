@@ -921,6 +921,9 @@ MonoBehaviour:
   _playerPlanePrefab: {fileID: 8837883930146519448, guid: 521d8bb381fcf40978d3c42cd5e31382, type: 3}
   _enemySpawnTransform: {fileID: 345711603}
   _playerSpawnTransform: {fileID: 1702213205}
+  _powerupPrefabs:
+  - {fileID: 1970517186837468378, guid: 014feb5b1b5c5492996bc93d41f02b2d, type: 3}
+  - {fileID: 1970517186837468378, guid: 42a0cb78a944440c58ca80f196efba37, type: 3}
 --- !u!4 &1725839338
 Transform:
   m_ObjectHideFlags: 0

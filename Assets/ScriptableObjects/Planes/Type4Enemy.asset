@@ -21,3 +21,6 @@ MonoBehaviour:
   _weaponConfigs:
   - {fileID: 11400000, guid: f830a833e08c241eeab2ed53da4f479a, type: 2}
   _rewardScore: 300
+  PowerupWeights:
+    _keys: 000000000100000002000000
+    _values: 020000000100000001000000

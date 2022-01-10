@@ -9,13 +9,13 @@ public static class Extensions
     private static readonly System.Random _random = new System.Random();
 
     /// <summary>
-    /// Select an item from the given list according to their respective weights.
+    /// Select the index of item from the given list according to their respective weights.
     /// </summary>
     /// <param name="sequence"></param>
     /// <param name="weightSelector"></param>
     /// <typeparam name="T"></typeparam>
     /// <returns>Index of randomly picked item.</returns>
-    public static int PickWeightedElementIndex(this List<float> list)
+    public static int PickWeightedElementIndex(this List<int> list)
     {
         if (list.Any() == false)
         {
@@ -48,5 +48,29 @@ public static class Extensions
         }
 
         return default;
+    }
+
+    public static List<K> GetDictionaryKeys<K, V>(this Dictionary<K, V> dict)
+    {
+        List<K> keys = new List<K>();
+
+        foreach (K key in dict.Keys)
+        {
+            keys.Add(key);
+        }
+
+        return keys;
+    }
+
+    public static List<V> GetDictionaryValues<K, V>(this Dictionary<K, V> dict)
+    {
+        List<V> values = new List<V>();
+
+        foreach (V value in dict.Values)
+        {
+            values.Add(value);
+        }
+
+        return values;
     }
 }

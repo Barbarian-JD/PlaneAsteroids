@@ -26,3 +26,4 @@ MonoBehaviour:
   - 0.1
   - 2
   InterSpawnDelayInSec: 1.5
+  LevelPowerupSpawnChance: 0.1

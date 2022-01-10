@@ -38,8 +38,13 @@ public abstract class WeaponController : MonoBehaviour
                 Fire();
             }
 
-            yield return new WaitForSeconds(Weapon.GetCooldownTime());
+            yield return new WaitForSeconds(GetWeaponCooldownTime());
         }
+    }
+
+    protected float GetWeaponCooldownTime()
+    {
+        return _planeController.PlaneWeaponCooldownMultiplier * Weapon.GetCooldownTime();
     }
 
     protected bool CanFire()

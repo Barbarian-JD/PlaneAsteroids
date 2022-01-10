@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbd8734d19b394cc7b513bdefa1d5ce5, type: 3}
   m_Name: MultiGunWeapon_Player
   m_EditorClassIdentifier: 
-  _baseAttack: 8
+  _baseAttack: 12
   _cooldownTime: 0.2
   _bulletSpeed: 16
   _numBullets: 4

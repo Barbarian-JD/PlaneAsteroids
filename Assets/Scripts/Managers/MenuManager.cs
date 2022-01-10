@@ -102,7 +102,7 @@ public class MenuManager : MonoBehaviour
     {
         if (_levelSelectDropdown != null)
         {
-            int totalLevels = GameManager.Instance.GameConfig.GetTotalLevels();
+            int totalLevels = GameManager.Instance.GetTotalNumberOfLevels();
             List<string> levelOptions = new List<string>();
             for (int i = 1; i <= totalLevels; i++)
             {

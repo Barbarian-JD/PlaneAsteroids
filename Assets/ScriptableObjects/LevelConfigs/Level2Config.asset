@@ -14,15 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TotalEnemiesToBeSpawned: 20
   EnemyPlaneTypes: 00000000010000000200000003000000
-  PlaneProbabilityWeights:
-  - 1
-  - 1
-  - 1
-  - 0
+  PlaneProbabilityWeights: 01000000010000000100000000000000
   BossPlaneType: 2
   FormationTypes: 000000000100000002000000
-  FormationProbabilityWeights:
-  - 0.5
-  - 0.1
-  - 2
+  FormationProbabilityWeights: 000000000000000002000000
   InterSpawnDelayInSec: 2
+  LevelPowerupSpawnChance: 0.05
