@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _powerupType: 1
   _powerupParams:
-    _multiplier: 1
-    _duration: 2
+    Multiplier: 1
+    Duration: 2
   _powerupMovementSpeed: 2

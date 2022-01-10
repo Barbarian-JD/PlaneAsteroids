@@ -16,14 +16,14 @@ public class PowerupSO : ScriptableObject
     [SerializeField] private float _powerupMovementSpeed;
 
     public PowerupType GetPowerupType() => _powerupType;
-    public float GetPowerupMultiplier() => _powerupParams != null ? _powerupParams._multiplier : 1f;
-    public long GetPowerupDuration() => _powerupParams != null ? _powerupParams._duration : 1;
+    public float GetPowerupMultiplier() => _powerupParams != null ? _powerupParams.Multiplier : 1f;
+    public long GetPowerupDuration() => _powerupParams != null ? _powerupParams.Duration : 1;
     public float GetPowerupMovementSpeed() => _powerupMovementSpeed;
 }
 
 [System.Serializable]
 public class PowerupParams
 {
-    public float _multiplier;
-    public long _duration;
+    public float Multiplier;
+    public long Duration;
 }
