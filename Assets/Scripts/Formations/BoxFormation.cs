@@ -6,8 +6,10 @@ public class BoxFormation : Formation
 {
     private float _unitsSeparation = 1f;
 
-    public override void SetupUnits(List<Transform> units, Vector2 basePosition)
+    protected override void SetupUnits(List<AIPlaneController> units, Vector2 basePosition)
     {
+        base.SetupUnits(units, basePosition);
+
         int numUnits = units.Count;
 
         bool isOddNumOfUnits = numUnits % 2 == 1;
@@ -16,7 +18,7 @@ public class BoxFormation : Formation
 
         for (int i=0; i<numUnits; i++)
         {
-            Transform currTransform = units[i];
+            Transform currTransform = units[i].transform;
             Vector2 pos = new Vector2(basePosition.x, basePosition.y);
             float xDeltaIndex;
             float yDeltaIndex;

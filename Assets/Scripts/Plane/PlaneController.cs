@@ -38,6 +38,8 @@ public abstract class PlaneController : MonoBehaviour
     public float PlaneAttackMultiplier { get; private set; } = 1f;
     public float PlaneWeaponCooldownMultiplier { get; private set; } = 1f;
 
+    [SerializeField] protected Collider _collider;
+
     // Start is called before the first frame update
     protected virtual void Start()
     {

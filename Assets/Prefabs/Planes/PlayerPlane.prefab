@@ -315,7 +315,6 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -409,6 +408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlaneConfig: {fileID: 11400000, guid: eabf5d6e3410f4e78a43f11f0d261b16, type: 2}
+  _collider: {fileID: 6101134913848310483}
 --- !u!65 &6101134913848310483
 BoxCollider:
   m_ObjectHideFlags: 0

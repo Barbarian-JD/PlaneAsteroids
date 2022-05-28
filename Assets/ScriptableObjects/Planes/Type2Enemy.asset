@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Type2Enemy
   m_EditorClassIdentifier: 
   _maxHP: 100
-  _speed: {x: 10, y: 4}
+  _speed: {x: 3, y: 4}
   _planeType: 1
   _description: Small plane - Low HP, high attack, medium attack speed, high speed
   _weaponPrefabs:

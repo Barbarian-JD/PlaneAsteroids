@@ -83,31 +83,52 @@ public class LevelGenerator : SingletonMonoBehaviour<LevelGenerator>
             }
 
             numPlanesSpawned += numPlanesToSpawn;
-            List<GameObject> newEnemies = new List<GameObject>();
+            List<AIPlaneController> newEnemies = new List<AIPlaneController>();
             for(int i=1; i<=numPlanesToSpawn; i++)
             {
                 GameObject plane = GeneratePlane(planeType);
                 plane.transform.position = _enemySpawnTransform.position;
-                plane.GetComponent<PlaneController>().PlaneDestroyed += OnPlaneDestroyed;
+                AIPlaneController aiPlaneController = plane.GetComponent<AIPlaneController>();
 
-                newEnemies.Add(plane);
+                if(aiPlaneController == null)
+                {
+                    Debug.LogErrorFormat("AIPlaneController script not found. i={0}. This shouldn't happen.", i);
+                    continue;
+                }
+
+                aiPlaneController.PlaneDestroyed += OnPlaneDestroyed;
+
+                newEnemies.Add(aiPlaneController);
             }
 
-            _enemyPlaneObjects.AddRange(newEnemies);
+            _enemyPlaneObjects.AddRange(newEnemies.Select(enemy => enemy.gameObject));
 
             Formation formation = GenerateFormation(formationType);
-            List<Transform> formationTransforms = newEnemies.Select(planeObj => planeObj.transform).ToList();
-            formation.SetupUnits(formationTransforms, _enemySpawnTransform.position);
+            //List<Transform> formationTransforms = newEnemies.Select(planeObj => planeObj.transform).ToList();
+            formation.Initialize(newEnemies, _enemySpawnTransform.position);
 
             yield return new WaitForSeconds(_currLevelConfig.InterSpawnDelayInSec);
         }
 
-        // Generate boss -- No need of formations
+        // Spawn the boss plane, if all other planes are already generated.
+        SpawnBossPlane();
+    }
+
+    private void SpawnBossPlane()
+    {
+        // Generate boss
+        Formation bossSoloFormation = GenerateFormation(FormationType.SINGLE);
+
         PlaneType bossPlaneType = _currLevelConfig.BossPlaneType;
         GameObject bossPlane = GeneratePlane(bossPlaneType);
-        bossPlane.transform.position = _enemySpawnTransform.position;
-        bossPlane.GetComponent<PlaneController>().PlaneDestroyed += OnPlaneDestroyed;
-        bossPlane.GetComponent<AIPlaneController>().IsBoss = true;
+
+        AIPlaneController bossPlaneController = bossPlane.GetComponent<AIPlaneController>();
+        //bossPlane.transform.position = _enemySpawnTransform.position;
+        bossPlaneController.PlaneDestroyed += OnPlaneDestroyed;
+        bossPlaneController.IsBoss = true;
+
+        bossSoloFormation.Initialize(new List<AIPlaneController>() { bossPlaneController }
+                                     , _enemySpawnTransform.position);
 
         _enemyPlaneObjects.Add(bossPlane);
     }

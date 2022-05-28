@@ -7,11 +7,13 @@ using UnityEngine;
 /// </summary>
 public class SingleFormation : Formation
 {
-    public override void SetupUnits(List<Transform> units, Vector2 basePosition)
+    protected override void SetupUnits(List<AIPlaneController> units, Vector2 basePosition)
     {
+        base.SetupUnits(units, basePosition);
+
         for (int i=0; i<units.Count; i++)
         {
-            Transform currTransform = units[i];
+            Transform currTransform = units[i].transform;
             currTransform.position = basePosition;
         }
     }
